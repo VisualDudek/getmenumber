@@ -17,7 +17,7 @@ def number(url):
     img = img.convert('L')
     img = img.filter(ImageFilter.MedianFilter()) 
     img = img.point(lambda x: 0 if x < 140 else 255) 
-    img.show()
+    # img.show()
 
     return pytesseract.image_to_string(img, lang='eng', \
         config='--psm 6 --oem 3')
