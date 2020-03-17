@@ -7,8 +7,8 @@
 
 ## Usage
 
-use function `number(url)` from `getmenumber.py`
+use function `number(url)` from `getmedigit.py`
 
 ## Examples
 
-uncomment url and run `getmenumber.py`
+uncomment url and run `getmedigit.py`
