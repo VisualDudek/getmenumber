@@ -12,3 +12,7 @@ use function `number(url)` from `getmedigit.py`
 ## Examples
 
 uncomment url and run `getmedigit.py`
+
+## TODO
+- read 1) erozja 2) dylacja
+- add consistency check -> OCR all = OCR_poz + OCR_neg
