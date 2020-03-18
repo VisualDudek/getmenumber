@@ -29,10 +29,10 @@ def number(url):
     img = img.point(lambda x: 0 if x < 200 else 255) 
     img_negatywne = img.getchannel('R')
 
-    return (
+    return list(map(int, (
         pytesseract.image_to_string(img_badania, lang='eng', config='--psm 6 --oem 3'), \
         pytesseract.image_to_string(img_negatywne, lang='eng', config='--psm 6 --oem 3'),
-    )
+    )))
 
 if __name__ == "__main__":
 
@@ -54,8 +54,9 @@ if __name__ == "__main__":
 
     for url, badania, negatywne in urls:
 
+        badania, negatywne = int(badania), int(negatywne)
         res = number(url)
-        print(f'BadaniaOCR: {res[0]}, {badania}; NegatywneOCR: {res[1]}; \
+        print(f'BadaniaOCR: {res[0]}, {badania}; NegatywneOCR: {res[1]}, {negatywne} \
             CHECK: {res[0] == badania} AND {res[1] == negatywne}')
     
     
