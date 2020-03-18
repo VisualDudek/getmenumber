@@ -25,6 +25,7 @@ def number(url):
 
     # Negatywne
     img = img_original.crop(borders[1])
+    img = img.resize((150, 70), PIL.Image.LANCZOS)
     img = img.point(lambda x: 0 if x < 200 else 255) 
     img_negatywne = img.getchannel('R')
 
