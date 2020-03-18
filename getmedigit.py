@@ -23,14 +23,14 @@ def number(url):
     img_badania = img.point(lambda x: 0 if x < 140 else 255) 
     # img.show()
 
-    # Pozytywne
+    # Negatywne
     img = img_original.crop(borders[1])
     img = img.point(lambda x: 0 if x < 200 else 255) 
-    img_pozytywne = img.getchannel('R')
+    img_negatywne = img.getchannel('R')
 
     return (
         pytesseract.image_to_string(img_badania, lang='eng', config='--psm 6 --oem 3'), \
-        pytesseract.image_to_string(img_pozytywne, lang='eng', config='--psm 6 --oem 3'),
+        pytesseract.image_to_string(img_negatywne, lang='eng', config='--psm 6 --oem 3'),
     )
 
 if __name__ == "__main__":
@@ -51,10 +51,10 @@ if __name__ == "__main__":
         # ('https://pbs.twimg.com/media/ESbCKZWXsAAKfYB?format=jpg&name=4096x4096', '855'),
     ]
 
-    for url, badania, pozytywne in urls:
+    for url, badania, negatywne in urls:
 
         res = number(url)
-        print(f'BadaniaOCR: {res[0]}, {badania}; PozytywneOCR: {res[1]}; \
-            CHECK: {res[0] == badania} AND {res[1] == pozytywne}')
+        print(f'BadaniaOCR: {res[0]}, {badania}; NegatywneOCR: {res[1]}; \
+            CHECK: {res[0] == badania} AND {res[1] == negatywne}')
     
     
