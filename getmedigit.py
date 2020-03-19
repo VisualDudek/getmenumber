@@ -5,6 +5,16 @@ from PIL import ImageOps
 from io import BytesIO
 import pytesseract
 
+# MZImageReader
+
+class BaniaOCRException(Exception):
+    pass
+
+class NegatywneOCRException(Exception):
+    pass
+
+class ConsistencyException(Exception):
+    pass
 
 def number(url):
 
@@ -34,16 +44,16 @@ def number(url):
     try:
         res_badania = int(res_badania)
     except ValueError:
-        img_badania.save('log_img', 'JPEG')
-        raise Exception(f'OCR return non digit while processing BADANIA: {res_badania}, chekc log_img.jpeg')
+        # raise BaniaOCRException(f'OCR return non digit while processing BADANIA: {res_badania}')
+        return None, None
 
     res_negatywne = pytesseract.image_to_string(img_negatywne, lang='eng', config='--psm 6 --oem 3')
 
     try:
         res_negatywne = int(res_negatywne)
     except ValueError:
-        img_negatywne.save('log_img', 'JPEG')
-        raise Exception(f'OCR return non digit while processing NEGATYWNE: {res_negatywne}, check log_img.jpeg')
+        # raise NegatywneOCRException(f'OCR return non digit while processing NEGATYWNE: {res_negatywne}')
+        return None, None
 
     return (res_badania, res_negatywne)
 
@@ -55,7 +65,7 @@ if __name__ == "__main__":
         ('https://pbs.twimg.com/media/ETYlu89WsAYZrwr?format=jpg&name=4096x4096', '9515', '9269'),
         ('https://pbs.twimg.com/media/ETTee-AXYAMo_mc?format=jpg&name=4096x4096', '7899', '7694'),
         ('https://pbs.twimg.com/media/ETJLirdWAAENj2v?format=jpg&name=4096x4096', '5493', '5382'),
-        # ('https://pbs.twimg.com/media/ETEd72dWkAE8Cy1?format=jpg&name=4096x4096', '4414', '0000'),
+        ('https://pbs.twimg.com/media/ETEd72dWkAE8Cy1?format=jpg&name=4096x4096', '4414', '0000'),
         ('https://pbs.twimg.com/media/ES-ctkBWkAAUPku?format=jpg&name=4096x4096', '2889', '2831'),
         ('https://pbs.twimg.com/media/ES5xff1WsAEzLW4?format=jpg&name=4096x4096', '2234', '2187'),
         ('https://pbs.twimg.com/media/ES0QpA0XsAAaKg8?format=jpg&name=4096x4096', '2024', '1999'),
