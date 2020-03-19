@@ -29,15 +29,20 @@ def number(url):
 
     img = img_original.crop(borders[0])
     img = img.resize((150, 52), PIL.Image.LANCZOS) # ratio 0,35
+    img = img.filter(ImageFilter.MaxFilter(3))
+    img = img.filter(ImageFilter.MinFilter(3))
     img = img.getchannel('R')
     img_badania = img.point(lambda x: 0 if x < 140 else 255) 
-    # img.show()
+    # img_badania.show()
 
     # Negatywne
     img = img_original.crop(borders[1])
     img = img.resize((150, 70), PIL.Image.LANCZOS)
+    img = img.filter(ImageFilter.MaxFilter(3))
+    img = img.filter(ImageFilter.MinFilter(3))
     img = img.point(lambda x: 0 if x < 200 else 255) 
     img_negatywne = img.getchannel('R')
+    # img_negatywne.show()
 
     res_badania = pytesseract.image_to_string(img_badania, lang='eng', config='--psm 6 --oem 3')
 
