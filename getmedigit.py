@@ -62,6 +62,7 @@ if __name__ == "__main__":
     # Example urls for testing
 
     urls = [
+        ('https://pbs.twimg.com/media/ETdtVtJWAAEn_o_?format=jpg&name=4096x4096', '11196', '10891'),
         ('https://pbs.twimg.com/media/ETYlu89WsAYZrwr?format=jpg&name=4096x4096', '9515', '9269'),
         ('https://pbs.twimg.com/media/ETTee-AXYAMo_mc?format=jpg&name=4096x4096', '7899', '7694'),
         ('https://pbs.twimg.com/media/ETJLirdWAAENj2v?format=jpg&name=4096x4096', '5493', '5382'),
