@@ -72,7 +72,7 @@ class MZImageReader():
         img = img.filter(ImageFilter.MaxFilter(3))
         img = img.filter(ImageFilter.MinFilter(3))
         img = img.getchannel('R')
-        img = img.point(lambda x: 0 if x < 200 else 255) 
+        img = img.point(lambda x: 0 if x < 210 else 255) 
         img = ImageOps.invert(img)
         img_pozytywne = img
         # img_pozytywne.show()
@@ -173,8 +173,8 @@ if __name__ == "__main__":
     urls = [
         ('https://pbs.twimg.com/media/ETdtVtJWAAEn_o_?format=jpg&name=4096x4096', (11196, 10891, 305), True ),
         ('https://pbs.twimg.com/media/ETYlu89WsAYZrwr?format=jpg&name=4096x4096', (9515, 9269, 246), True ),
-        # ('https://pbs.twimg.com/media/ETTee-AXYAMo_mc?format=jpg&name=4096x4096', (7899, 7694) ),
-        # ('https://pbs.twimg.com/media/ETJLirdWAAENj2v?format=jpg&name=4096x4096', (5493, 5382) ),
+        ('https://pbs.twimg.com/media/ETTee-AXYAMo_mc?format=jpg&name=4096x4096', (7899, 7694, 205), True ),
+        ('https://pbs.twimg.com/media/ETJLirdWAAENj2v?format=jpg&name=4096x4096', (5493, 5382, 111), True ),
         ('https://pbs.twimg.com/media/ETEd72dWkAE8Cy1?format=jpg&name=4096x4096', (4414, 0000, 0000), False ),
         # ('https://pbs.twimg.com/media/ES-ctkBWkAAUPku?format=jpg&name=4096x4096', '2889', '2831'),
         # ('https://pbs.twimg.com/media/ES5xff1WsAEzLW4?format=jpg&name=4096x4096', '2234', '2187'),
