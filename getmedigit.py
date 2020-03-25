@@ -68,7 +68,7 @@ class MZImageReader():
 
         # Pozytywne
         img = img_original.crop(borders[2])
-        img = img.resize((150, 70), PIL.Image.LANCZOS)
+        img = img.resize((150, 60), PIL.Image.LANCZOS)
         img = img.filter(ImageFilter.MaxFilter(3))
         img = img.filter(ImageFilter.MinFilter(3))
         img = img.getchannel('R')
@@ -171,6 +171,7 @@ if __name__ == "__main__":
 
     # Example urls for testing
     urls = [
+        ('https://pbs.twimg.com/media/ET33GkeWoAAVyRh?format=jpg&name=4096x4096', (22898, 22124, 774), True),
         ('https://pbs.twimg.com/media/ETdtVtJWAAEn_o_?format=jpg&name=4096x4096', (11196, 10891, 305), True ),
         ('https://pbs.twimg.com/media/ETYlu89WsAYZrwr?format=jpg&name=4096x4096', (9515, 9269, 246), True ),
         ('https://pbs.twimg.com/media/ETTee-AXYAMo_mc?format=jpg&name=4096x4096', (7899, 7694, 205), True ),
